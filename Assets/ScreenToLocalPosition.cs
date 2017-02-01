@@ -28,7 +28,6 @@ public class ScreenToLocalPosition : MonoBehaviour {
 			if (Physics.Raycast(ray, out hitInfo)){
 				Vector3 hitPos = hitInfo.point;
 				Vector3 localHitPos = hitInfo.transform.InverseTransformPoint(hitPos);
-
 				//
 				float x = 1.0f - (localHitPos.x + 5.0f) / 10.0f;
 				float y = 1.0f - (localHitPos.z + 5.0f) / 10.0f;
@@ -42,10 +41,10 @@ public class ScreenToLocalPosition : MonoBehaviour {
 					mouseDown = true;
 				}
 
-				fluid.colorMode(Processing.ColorMode.HSB, 360, 1, 1);
+//				fluid.colorMode(Processing.ColorMode.HSB, 360, 1, 1);
 				float hue = ((x + y) * 180 + Time.time) % 360;
 				colorP5 drawColor = fluid.colorHue(hue, 1, 1);
-				fluid.colorMode(Processing.ColorMode.RGB, 1);
+//				fluid.colorMode(Processing.ColorMode.RGB, 1);
 				
 				fluid.addForce(x, y, mouseVelX * mouseMoveV, mouseVelY * mouseMoveV, drawColor, (int)(emitCount * Time.deltaTime * 30));
 

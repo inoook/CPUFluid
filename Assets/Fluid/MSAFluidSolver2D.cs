@@ -408,7 +408,6 @@ public class MSAFluidSolver2D {
 		project(u, v, uOld, vOld);
 		
 		if(_isRGB) {
-			
 			//ADD_SOURCE_RGB();
 			addSourceRGB();
 			
@@ -474,9 +473,7 @@ public class MSAFluidSolver2D {
 			r[i] *= holdAmount;
 		}
 		_avgDensity *= _invNumCells;
-		//	_avgSpeed *= _invNumCells;
-		
-		//	println("%.3f\n", _avgSpeed);
+
 		uniformity = 1.0f / (1 + totalDeviations * _invNumCells);		// 0: very wide distribution, 1: very uniform
 	}
 	
