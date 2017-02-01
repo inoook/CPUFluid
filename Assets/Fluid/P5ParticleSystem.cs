@@ -91,8 +91,8 @@ public class P5ParticleSystem : Processing
 		for (int i = maxParticles; i < allParticles; i++) { 
 			p5particles [i].isStay = true;
 			
-			float x = Random.Range (0, Setting.SCREEN_W);
-			float y = Random.Range (0, Setting.SCREEN_H);
+			float x = Random.Range (0, P5Setting.SCREEN_W);
+			float y = Random.Range (0, P5Setting.SCREEN_H);
 			Color color = stayColor;
 			p5particles [i].init (x, y, color);
 			float t_alpha = Random.Range (0.4f, 0.9f);

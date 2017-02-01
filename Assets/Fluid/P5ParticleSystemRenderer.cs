@@ -6,11 +6,11 @@ using System.Collections;
  */
 public class P5ParticleSystemRenderer : MonoBehaviour {
 	
-	public static float UPSCALE_SIZE = 1.0f;
-	public static float UPSCALE_TARGET_SIZE = 3.0f;
-	public static float PARTICLE_SIZE = 4.0f;
-	public static float PARTICLE_STAY_SIZE = 3.0f;
-	public static float PARTICLE_MINMUM_SIZE = 0.025f;//動いていないときのサイズ
+	static float UPSCALE_SIZE = 1.0f;
+	static float UPSCALE_TARGET_SIZE = 3.0f;
+	public float PARTICLE_SIZE = 4.0f;
+	public float PARTICLE_STAY_SIZE = 3.0f;
+	public float PARTICLE_MINMUM_SIZE = 0.025f;//動いていないときのサイズ
 	
 	public static float MIN_MAGNITUDE = 0.005f;//動いていないと判断するスピード
 	
@@ -55,7 +55,7 @@ public class P5ParticleSystemRenderer : MonoBehaviour {
 	void LateUpdate () {
 		
 		// update all Position & render
-		Vector3 offset = new Vector3(Setting.SCREEN_W/2, Setting.SCREEN_H/2, 0);
+		Vector3 offset = new Vector3(P5Setting.SCREEN_W/2, P5Setting.SCREEN_H/2, 0);
 		Vector3 minSize = new Vector3(1,1,0) * PARTICLE_MINMUM_SIZE;
 		
 		for(int i = 0; i < maxParticles; i++){

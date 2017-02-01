@@ -24,8 +24,8 @@ public class MSAFluid : Processing
 	
 	public override void setup ()
 	{
-		invWidth = 1.0f / Setting.SCREEN_W;
-		invHeight = 1.0f / Setting.SCREEN_H;
+		invWidth = 1.0f / P5Setting.SCREEN_W;
+		invHeight = 1.0f / P5Setting.SCREEN_H;
 		aspectRatio = width * invHeight;
 		aspectRatio2 = aspectRatio * aspectRatio;
 		
@@ -45,7 +45,6 @@ public class MSAFluid : Processing
 			p5particleSystem = this.gameObject.AddComponent<P5ParticleSystem> ();
 		}
 		p5particleSystem.Init (fluidSolver);
-
 	}
 
 	public override void mouseMoved ()
@@ -53,7 +52,8 @@ public class MSAFluid : Processing
 
 	}
 
-	public float drawV = 2;// 書くときのbmpに描画する濃さ
+	[Tooltip("bmpに描画する濃さ")]
+	public float drawV = 2; 
 	
 	private bool isUpdateSolver = true;
 	private bool isUpdatePsys = true;
@@ -62,7 +62,6 @@ public class MSAFluid : Processing
 
 	public override void draw ()
 	{
-		
 		if (isSleep) {
 			return;
 		}
@@ -94,11 +93,15 @@ public class MSAFluid : Processing
 	}
 	
 	//  TODO: fluidSolverの中でも設定しているので整理の必要あり
+
+	[Tooltip("大きくするとforceFieldの変化がしにくくなる。変化がすぐ終わる")]
 	public float visc = 0.0001f;
-//  大きくするとforceFieldの変化がしにくくなる。変化がすぐ終わる
+
 	public float fadeSpeed = 0.003f;
+
+	[Tooltip("小さくするとforceFieldの変化がしにくくなる。初期値に戻りにくくなる")]
 	public float deltaT = 0.5f;
-	// 小さくするとforceFieldの変化がしにくくなる。初期値に戻りにくくなる
+
 	public int solverIterations = 10;
 
 	void DrawExtra ()
@@ -115,10 +118,10 @@ public class MSAFluid : Processing
 		int _NY = fluidSolver._NY;
 		float[] u = fluidSolver.u;
 		float[] v = fluidSolver.v;
-		float marginW = (float)Setting.SCREEN_W / (float)(_NX + 2);
-		float marginH = (float)Setting.SCREEN_H / (float)(_NY + 2);
-		float offsetX = Setting.SCREEN_W / 2 - this.transform.localPosition.x;
-		float offsetY = Setting.SCREEN_H / 2 - this.transform.localPosition.y;
+		float marginW = (float)P5Setting.SCREEN_W / (float)(_NX + 2);
+		float marginH = (float)P5Setting.SCREEN_H / (float)(_NY + 2);
+		float offsetX = P5Setting.SCREEN_W / 2 - this.transform.localPosition.x;
+		float offsetY = P5Setting.SCREEN_H / 2 - this.transform.localPosition.y;
 		Color lineColor = new Color (1, 1, 1, 0.35f);
 		for (int i = 0; i < _NX + 2; i++) {
 			for (int j = 0; j < _NY + 2; j++) {

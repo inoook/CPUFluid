@@ -92,11 +92,11 @@ public class Processing : MonoBehaviour
 	
 	public int width
 	{
-		get{ return Setting.SCREEN_W; }
+		get{ return P5Setting.SCREEN_W; }
 	}
 	public int height
 	{
-		get{ return Setting.SCREEN_H; }
+		get{ return P5Setting.SCREEN_H; }
 	}
 	
 	protected int frameCount;
